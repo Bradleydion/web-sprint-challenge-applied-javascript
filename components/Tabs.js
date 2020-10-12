@@ -11,7 +11,7 @@
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
 axios.get ("https://lambda-times-api.herokuapp.com/topics")
 .then ((response)=>{
-    console.log(response)
+    // console.log(response)
     response.data.topics.forEach(i =>topicsCard.append(topicTab(i)))
     
 

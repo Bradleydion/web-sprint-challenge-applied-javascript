@@ -23,43 +23,44 @@
 
 const cardContainer = document.querySelector(".cards-container")
 
+
 axios.get("https://lambda-times-api.herokuapp.com/articles")
 .then((response)=>
-    response.data.articles.bootstrap.forEach(i => cardContainer.append(article(i))),
+    {response.data.articles.bootstrap.forEach(i => cardContainer.append(article(i))),
     response.data.articles.javascript.forEach(i => cardContainer.append(article(i))),
     response.data.articles.jquery.forEach(i => cardContainer.append(article(i))),
     response.data.articles.node.forEach(i => cardContainer.append(article(i))),
-    response.data.articles.tech.forEach(i => cardContainer.append(article(i)))
+    response.data.articles.technology.forEach(i => cardContainer.append(article(i)))}
 )
 .catch((err)=>(console.log(err)))
 
-
-
 const article=(object) =>{
-const articleCard = document.createElemnt("div")
+const articleCard = document.createElement("div")
 articleCard.classList.add("card")
 
 const headlineDiv = document.createElement("div")
 headlineDiv.classList.add("headline")
-headlineDiv.textContent=`${object.articles.headline}`
+headlineDiv.textContent=`${object.headline}`
 articleCard.append (headlineDiv)
 
 const authorA = document.createElement("div")
-author.classList.add("author")
+authorA.classList.add("author")
 headlineDiv.append(authorA)
 
 const image = document.createElement("div")
-image.classList.add("image-container")
-author.append(image)
+image.classList.add("img-container")
+authorA.append(image)
 
 const photo = document.createElement("img")
-image.src= object.articles.authorPhoto
-image.append (photo)
+photo.src= object.authorPhoto
+image.append(photo)
 
 const authorB = document.createElement("span")
-authorB.textContent=`${object.articles.authorName}`
+authorB.textContent=`${object.authorName}`
 authorA.append(authorB)
 
+cardContainer.addEventListener('click', (e)=> {console.log(object.headline)})
 return articleCard
 }
+
 
